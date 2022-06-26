@@ -1,0 +1,17 @@
+{
+  "name": "Some Words Club",
+  "symbol": "SWClub",
+  "description": "Some words are just for you, some are for the world",
+  "image": "ipfs://Qmex81B3Xu92q8eaD3eh2TfzAaMoE9f3W9aeLXu837Y3wc/3.jpeg",
+  "external_url": "https://nextjs.org",
+  "attributes": [
+    {
+      "trait_type": "WORD",
+      "value": "pleasure"
+    },
+    {
+      "trait_type": "LENGTH",
+      "value": "8"
+    }
+  ]
+}
