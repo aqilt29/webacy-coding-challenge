@@ -11,7 +11,6 @@ contract ContractTest is Test {
 
   function setUp() public {
     someWordsClub = new SomeWordsClub(defaultUri);
-
   }
 
   function testUri() public {
