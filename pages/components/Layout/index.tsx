@@ -1,10 +1,16 @@
 import { FC, ReactNode } from "react";
+import Head from "next/head";
 
 const Layout: FC<{children: ReactNode | ReactNode[] }> = ({ children }) => {
   return (
-    <div className="w-screen h-screen bg-white">
-      {children}
-    </div>
+    <>
+      <Head>
+        <title>SomeWordsClub</title>
+      </Head>
+      <div className="bg-white p-1 max-w-4xl mx-auto lg:p-[4rem]">
+        {children}
+      </div>
+    </>
   )
 };
 
