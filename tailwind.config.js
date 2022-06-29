@@ -15,6 +15,7 @@ module.exports = {
     extend: {},
   },
   plugins: [
+    require('@tailwindcss/forms'),
     plugin(({ addBase, theme }) => {
       addBase({
         'p': {

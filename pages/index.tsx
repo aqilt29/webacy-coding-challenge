@@ -2,9 +2,10 @@ import { ConnectButton } from "@rainbow-me/rainbowkit";
 import type { NextPage } from "next";
 import Image from 'next/image'
 
-import Layout from "./components/Layout";
+import Layout from "../components/Layout";
 
 import SomeWordsClubJSON from "../blockchain/out/SomeWordsClub.sol/SomeWordsClub.json";
+import MintingForm from "../components/MintingForm";
 
 
 
@@ -41,38 +42,7 @@ const Home: NextPage = () => {
         <div className="border-solid border-black border-t-[0.0625rem] flex justify-center p-6">
           <ConnectButton chainStatus="icon" />
         </div>
-        <div className="border-solid border-black border-t-[0.0625rem] flex flex-col justify-center p-6">
-          <div className=" p-4 flex">
-            <h1>Word 0</h1>
-            <div className="relative w-1/2 h-64">
-              <Image src="/cloud_0.jpeg" layout="fill" height={612} width={383} alt="image of nft for tokenId 0" />
-            </div>
-          </div>
-          <div className="border-solid border-black border-t-[0.0625rem] p-4 flex">
-            <h1>Word 1</h1>
-            <div className="relative w-1/2 h-64">
-              <Image src="/cloud_0.jpeg" layout="fill" height={612} width={383} alt="image of nft for tokenId 0" />
-            </div>
-          </div>
-          <div className="border-solid border-black border-t-[0.0625rem] p-4 flex">
-            <h1>Word 2</h1>
-            <div className="relative w-1/2 h-64">
-              <Image src="/cloud_0.jpeg" layout="fill" height={612} width={383} alt="image of nft for tokenId 0" />
-            </div>
-          </div>
-          <div className="border-solid border-black border-t-[0.0625rem] p-4 flex">
-            <h1>Word 3</h1>
-            <div className="relative w-1/2 h-64">
-              <Image src="/cloud_0.jpeg" layout="fill" height={612} width={383} alt="image of nft for tokenId 0" />
-            </div>
-          </div>
-          <div className="border-solid border-black border-t-[0.0625rem] p-4 flex">
-            <h1>Word 4</h1>
-            <div className="relative w-1/2 h-64">
-              <Image src="/cloud_0.jpeg" layout="fill" height={612} width={383} alt="image of nft for tokenId 0" />
-            </div>
-          </div>
-        </div>
+        <MintingForm />
       </div>
     </Layout>
   );
