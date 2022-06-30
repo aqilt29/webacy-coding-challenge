@@ -5,10 +5,9 @@ import { useAccount, useContractRead, useContractWrite } from "wagmi";
 import classNames from "classnames";
 import { ethers } from "ethers";
 
-import NumberIncrementor from "./NumberIncrementer";
-
 import SomeWordsClubJSON from "../../blockchain/out/SomeWordsClub.sol/SomeWordsClub.json";
 import LoadingSpinner from "../LoadingSpinner";
+import InputNFTListItem from "./InputNFTListItem";
 
 const someWordsClubContractAddress =
   process.env.NEXT_PUBLIC_CONTRACT_ADDRESS || "";
@@ -46,37 +45,6 @@ const nftIdToNameMapping = {
   pleasure: 3,
   success: 4,
 }
-
-const InputNFTListItem: FC<{
-  imageURI: string;
-  name: string;
-  title: string;
-  tokenId: number;
-  index: number;
-}> = ({ imageURI, name, title, tokenId, index }) => {
-  return (
-    <div
-      className={classNames(
-        "p-4 flex justify-between",
-        index !== 0 ? "border-solid border-black border-t-[0.0625rem]" : ""
-      )}
-    >
-      <div className="flex flex-col space-y-10">
-        <h1>{title}</h1>
-        <NumberIncrementor name={name} />
-      </div>
-      <div className="relative w-1/2 h-64">
-        <Image
-          src={imageURI}
-          layout="fill"
-          height={612}
-          width={383}
-          alt={`image of nft for tokenId ${tokenId}`}
-        />
-      </div>
-    </div>
-  );
-};
 
 const MintingForm: FC = () => {
   const [isAwaitingContract, setIsAwaitingContract] = useState(false);

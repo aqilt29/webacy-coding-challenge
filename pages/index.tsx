@@ -5,6 +5,7 @@ import Image from 'next/image'
 import Layout from "../components/Layout";
 
 import MintingForm from "../components/MintingForm";
+import NFTDisplayModule from "../components/NFTDisplayModule";
 
 const Home: NextPage = () => {
   // console.log(typeof window === undefined)
@@ -40,6 +41,7 @@ const Home: NextPage = () => {
           <ConnectButton chainStatus="icon" />
         </div>
         <MintingForm />
+        <NFTDisplayModule />
       </div>
     </Layout>
   );

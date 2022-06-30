@@ -79,7 +79,7 @@ contract SomeWordsClub is ERC1155, ERC1155Supply, ReentrancyGuard, Ownable {
     }
 
     require(msg.value >= (totalTokensToMint * MINT_PRICE), "ERROR, not enough eth to buy");
-
+    require(totalTokensToMint >= 1, "Must mint at least 1 NFT");
 
     _mintBatch(msg.sender, tokenIds, numEachTokens, "");
   }
