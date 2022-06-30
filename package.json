@@ -8,6 +8,7 @@
     "start": "next start",
     "lint": "next lint",
     "sol:build": "forge build --config-path ./blockchain/foundry.toml",
+    "sol:deployLocal": "( cd blockchain && source ../.env && echo $ETHERSCAN_API_KEY && forge script script/Contract.s.sol:Deploy --fork-url http://localhost:8545 --private-key $DEV_PRIVATE_KEY --broadcast )",
     "sol:test": "echo test"
   },
   "dependencies": {
