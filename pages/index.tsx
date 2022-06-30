@@ -4,14 +4,11 @@ import Image from 'next/image'
 
 import Layout from "../components/Layout";
 
-import SomeWordsClubJSON from "../blockchain/out/SomeWordsClub.sol/SomeWordsClub.json";
 import MintingForm from "../components/MintingForm";
 
-
-
-console.log(SomeWordsClubJSON.abi);
-
 const Home: NextPage = () => {
+  // console.log(typeof window === undefined)
+
   return (
     <Layout>
       <div className="border-solid border-black border-[0.0625rem] rounded overflow-hidden">
