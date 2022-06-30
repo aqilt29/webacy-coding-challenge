@@ -1,7 +1,7 @@
 import { FC, useEffect, useState } from "react";
 import Image from "next/image";
 import { FormProvider, useForm, useWatch } from "react-hook-form";
-import { useAccount, useContractRead, useContractWrite } from "wagmi";
+import { useAccount, useContractWrite } from "wagmi";
 import classNames from "classnames";
 import { ethers } from "ethers";
 
@@ -126,6 +126,7 @@ const MintingForm: FC = () => {
       setIsWalletUnavailable(false);
       setButtonText("mint")
     }
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
 
   return (
