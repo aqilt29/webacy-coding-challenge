@@ -8,13 +8,38 @@ import {
   connectorsForWallets,
   wallet,
 } from '@rainbow-me/rainbowkit';
-import { chain, configureChains, createClient, WagmiConfig } from 'wagmi';
+import { Chain, chain, configureChains, createClient, WagmiConfig } from 'wagmi';
 import { alchemyProvider } from 'wagmi/providers/alchemy';
+import { jsonRpcProvider } from 'wagmi/providers/jsonRpc'
+
 const ALCHEMY_ID = process.env.NEXT_PUBLIC_ALCHEMY_API_KEY || "";
 
+const anvilLocalChain: Chain = {
+  id: 0x7a69,
+  name: 'LocalHost',
+  network: 'ethereum',
+  nativeCurrency: {
+    decimals: 18,
+    name: 'LocalHost',
+    symbol: 'ETH',
+  },
+  rpcUrls: {
+    default: 'http://localhost:8545',
+  },
+  testnet: false,
+}
+
 const { chains, provider, webSocketProvider } = configureChains(
-  [chain.goerli],
-  [alchemyProvider({ alchemyId: ALCHEMY_ID })]
+  [chain.goerli, anvilLocalChain],
+  [
+    alchemyProvider({ alchemyId: ALCHEMY_ID }),
+    jsonRpcProvider({
+      rpc: (chain) => {
+        if (chain.id !== anvilLocalChain.id) return null
+        return { http: chain.rpcUrls.default }
+      },
+    }),
+  ]
 );
 
 const { wallets } = getDefaultWallets({
