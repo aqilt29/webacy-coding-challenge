@@ -54,6 +54,48 @@ contract ContractTest is Test {
     assertTrue(someWordsClub.balanceOf(devAddress, 4) == 2500);
   }
 
+  function testCanMintBatchesOfNFTs() public {
+    startHoax(devAddress, 100 ether);
+
+    uint256[] memory tokensToMint = new uint256[](5);
+    uint256[] memory amountsToMint = new uint256[](5);
+
+    tokensToMint[0] = uint256(0);
+    tokensToMint[1] = 1;
+    tokensToMint[2] = 2;
+    tokensToMint[3] = 3;
+    tokensToMint[4] = 4;
+
+    amountsToMint[0] = uint256(5);
+    amountsToMint[1] = 5;
+    amountsToMint[2] = 5;
+    amountsToMint[3] = 5;
+    amountsToMint[4] = 5;
+
+    someWordsClub.mintBatchOfWords{ value: 0.0625 ether }(tokensToMint, amountsToMint);
+
+    assertTrue(address(someWordsClub).balance == 0.0625 ether);
+
+  }
+  
+  function testCanMintDifferentBatchesOfNFTs() public {
+    startHoax(devAddress, 100 ether);
+
+    uint256[] memory tokensToMint = new uint256[](2);
+    uint256[] memory amountsToMint = new uint256[](2);
+
+    tokensToMint[0] = uint256(0);
+    tokensToMint[1] = 4;
+
+    amountsToMint[0] = uint256(1);
+    amountsToMint[1] = 5;
+
+    someWordsClub.mintBatchOfWords{ value: 0.015 ether }(tokensToMint, amountsToMint);
+
+    assertTrue(address(someWordsClub).balance == 0.015 ether);
+
+  }
+
   function testCanWithdrawBalance() public {
     hoax(devAddress, 1 ether);
     someWordsClub.mintYourWord{value: 0.0125 ether}(0, 5);

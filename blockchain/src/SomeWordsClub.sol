@@ -47,7 +47,7 @@ contract SomeWordsClub is ERC1155, ERC1155Supply, ReentrancyGuard, Ownable {
   // has to mint the right NFTs
   // cant mint more than the MAX_SUPPLY of the NFTs
   // cant mint more than the MINT_LIMIT
-  // has to send the right amount of money
+  // has to send the right amount of mone
   function mintYourWord(uint256 tokenId, uint256 numTokens) external payable nonReentrant {
     require(isValidTokenId[tokenId] == true, "ERROR, out of bounds tokenId");
     require(numTokens <= MINT_LIMIT, "ERROR, minting too many at a time");
@@ -55,6 +55,29 @@ contract SomeWordsClub is ERC1155, ERC1155Supply, ReentrancyGuard, Ownable {
     require(msg.value >= (numTokens * MINT_PRICE), "ERROR, not enough eth to buy");
 
     _mint(msg.sender, tokenId, numTokens, "");
+  }
+
+  function mintBatchOfWords(uint256[] memory tokenIds, uint256[] memory numEachTokens) external payable nonReentrant {
+    console2.log(tokenIds.length, numEachTokens.length, "length of args");
+    require(tokenIds.length == numEachTokens.length, "ERC1155: ids and amounts length mismatch");
+    // check all the tokenIds and numEachTokens to be within bounds;
+    uint256 totalTokensToMint;
+
+    for (uint256 i = 0; i < tokenIds.length; i++) {
+      uint256 currentTokenId = tokenIds[i];
+      uint256 numTokens = numEachTokens[i];
+  
+      require(isValidTokenId[currentTokenId] == true, "Error, out of bounds tokenId");
+      require(numTokens <= MINT_LIMIT, "ERROR, minting too many at a time");
+      require((totalSupply(currentTokenId) + numTokens) <= MAX_SUPPLY, "ERROR, minting would go over supply limit");
+
+      totalTokensToMint += numTokens;
+    }
+
+    require(msg.value >= (totalTokensToMint * MINT_PRICE), "ERROR, not enough eth to buy");
+
+
+    _mintBatch(msg.sender, tokenIds, numEachTokens, "");
   }
 
   function _beforeTokenTransfer(address operator, address from, address to, uint256[] memory ids, uint256[] memory amounts, bytes memory data)

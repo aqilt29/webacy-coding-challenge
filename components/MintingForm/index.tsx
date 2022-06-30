@@ -66,10 +66,10 @@ const MintingForm: FC = () => {
   const { control } = methods;
   const shoppingCart = useWatch({ control, defaultValue: defaultCart });
 
-  const totalNFTs = Object.keys(shoppingCart).reduce((p, key) => p + shoppingCart[key], 0)
+  const totalNFTs = Object.keys(shoppingCart).reduce((p, key) => p + shoppingCart[key], 0);
 
-  console.log({ data, isError, isLoading });
-  console.log("is disabled", !data || isError || isLoading)
+  const isWalletUnavailable = (!data || isError || isLoading);
+
   return (
     <FormProvider {...methods}>
       <form onSubmit={onSubmit} className="contents">
@@ -100,10 +100,10 @@ const MintingForm: FC = () => {
             <h2
             className={classNames(
               "text-white transition ease-in-out",
-              (!data || isError || isLoading) ? "hover:text-white" : "hover:text-black"
+              isWalletUnavailable ? "hover:text-white" : "hover:text-black"
               )}
             >
-              {(!data || isError || isLoading) ? "Connect Wallet" :  "MINT"}
+              {isWalletUnavailable ? "Connect Wallet" :  "MINT"}
             </h2>
           </button>
         </div>
