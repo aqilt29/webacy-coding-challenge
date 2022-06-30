@@ -3,12 +3,12 @@ import { FC, useEffect, useState } from "react";
 import { useContractRead } from "wagmi";
 import Image from "next/image";
 import SomeWordsClubJSON from "../../blockchain/out/SomeWordsClub.sol/SomeWordsClub.json";
-import NumberIncrementor from "./NumberIncrementer";
+import NumberIncrementor from "../MintingForm/NumberIncrementer";
 
 const someWordsClubContractAddress =
   process.env.NEXT_PUBLIC_CONTRACT_ADDRESS || "";
 
-const InputNFTListItem: FC<{
+const NFTDisplaysItems: FC<{
   imageURI: string;
   name: string;
   title: string;
@@ -58,4 +58,4 @@ const InputNFTListItem: FC<{
     </div>
   );
 };
-export default InputNFTListItem;
+export default NFTDisplaysItems;
