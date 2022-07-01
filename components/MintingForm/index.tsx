@@ -127,7 +127,7 @@ const MintingForm: FC = () => {
       setButtonText("mint")
     }
   // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [])
+  }, [data])
 
   return (
     <FormProvider {...methods}>
