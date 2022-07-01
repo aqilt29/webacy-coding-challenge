@@ -38,4 +38,3 @@ yarn-error.log*
 
 # foundry files to ignore
 cache/
-out/
