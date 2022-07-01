@@ -2,7 +2,7 @@ import classNames from "classnames";
 import { FC, SyntheticEvent, useState } from "react";
 import { useFormContext, useController } from "react-hook-form";
 
-const NumberIncrementor: FC<{ name: string }> = ({ name }) => {
+const NumberIncrementor: FC<{ name: string, max?: number }> = ({ name, max = 5 }) => {
   const { control } = useFormContext();
 
   const { field: { value, onChange }, fieldState, formState } = useController({
@@ -22,7 +22,7 @@ const NumberIncrementor: FC<{ name: string }> = ({ name }) => {
 
   const incrementNumber = (e: SyntheticEvent) => {
     e.preventDefault();
-    if (value === 5) {
+    if (value === max) {
       return
     } else {
       onChange(value + 1);
@@ -43,12 +43,12 @@ const NumberIncrementor: FC<{ name: string }> = ({ name }) => {
         </div>
         <button
           onClick={incrementNumber}
-          disabled={value === 5}
+          disabled={value === max}
           className={classNames("transition ease-in-out hover:bg-white hover:text-black border-solid border-black border-l-[0.0625rem] px-3 py-1.5 bg-black text-white font-bold w-10 text-md", value === 5 ? "bg-gray-400 text-gray-400 hover:bg-gray-400" : "")}>
           +
         </button>
       </div>
-      {value === 5 && (<p className="text-red-500 relative bottom-8">*&nbsp;Max 5 😉</p>)}
+      {value === max && (<p className="text-red-500 relative bottom-8">*&nbsp;Max {max} 😉</p>)}
     </>
   );
 };

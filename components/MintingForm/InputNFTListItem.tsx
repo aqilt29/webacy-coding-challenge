@@ -44,7 +44,7 @@ const InputNFTListItem: FC<{
       <div className="flex flex-col space-y-10">
         <h1>{title}</h1>
         <NumberIncrementor name={name} />
-        <h4>Total Supply:&nbsp; {totalSupply}</h4>
+        <h4>Total Supply:&nbsp; {totalSupply}&nbsp;/ 2500</h4>
       </div>
       <div className="relative w-1/2 h-64">
         <Image

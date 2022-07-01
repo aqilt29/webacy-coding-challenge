@@ -7,7 +7,7 @@ const Layout: FC<{children: ReactNode | ReactNode[] }> = ({ children }) => {
       <Head>
         <title>SomeWordsClub</title>
       </Head>
-      <div className="bg-white p-1 max-w-4xl mx-auto lg:p-[4rem]">
+      <div className="bg-white p-1 max-w-4xl mx-auto md:p-[4rem]">
         {children}
       </div>
     </>

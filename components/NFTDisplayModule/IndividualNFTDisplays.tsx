@@ -14,7 +14,8 @@ const NFTDisplaysItems: FC<{
   title: string;
   tokenId: number;
   index: number;
-}> = ({ imageURI, name, title, tokenId, index }) => {
+  [key: string]: any;
+}> = ({ imageURI, name, title, tokenId, index, ...props }) => {
   // react conditional rendering issues with ssr
   const [totalSupply, setTotalSupply] = useState("Loading...");
 
@@ -43,8 +44,7 @@ const NFTDisplaysItems: FC<{
     >
       <div className="flex flex-col space-y-10">
         <h1>{title}</h1>
-        <NumberIncrementor name={name} />
-        <h4>Total Supply:&nbsp; {totalSupply}</h4>
+        <NumberIncrementor name={name} max={props?.max} />
       </div>
       <div className="relative w-1/2 h-64">
         <Image
