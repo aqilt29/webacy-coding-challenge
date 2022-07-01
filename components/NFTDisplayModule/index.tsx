@@ -116,6 +116,7 @@ const NFTDisplayModule: FC = () => {
     };
 
     fn();
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [data]);
 
 
